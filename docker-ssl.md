@@ -98,7 +98,7 @@ Let's Encrypt is an open, not for profit and free Certificate Authority (CA). Th
 
 3. Let's Encrypt sends the Certbot agent a unique token
 
-4. The Certbot agent places the token at an endpoint on your domain that looks like h`ttp://adityamishra.tech/`.well-known/acme-challenge/{token}
+4. The Certbot agent places the token at an endpoint on your domain that looks like `http://adityamishra.tech/`.well-known/acme-challenge/{token}
 
 5. If the token at the endpoint matches the token that was sent to the Certbot agent from the Let's Encrypt CA, the challenge request was successful and Let's Encrypt knows that you are in control of the domain.
 
@@ -230,6 +230,7 @@ Before running the Certbot command, spin up a Nginx container in Docker to ensur
 Then, open up a browser and visit the domain to ensure that the Docker container is up and running and accessible. As stated earlier, it's not necessary to have a default index.html page for this container, but it makes testing the container a lot easier, so I always create one.
 
 ![](aditya/http.png)
+
 *The Site Running in the Nginx Docker Container for Generating the First Let's Encrypt Certificate*
 
 
@@ -255,6 +256,7 @@ We're almost ready to execute the Certbot command. But before we do, you need to
 After executing the above command, you should get the following output which should indicate everything ran successfully.
 
 ![](aditya/6.png)
+
 *Issue a new Let's Encrypt Certificate with Certbot and Docker in Staging Mode*
 
 ##### The command does the following:
@@ -295,6 +297,7 @@ After executing the above command, you should get the following output which sho
 	
 	
 ![](aditya/7.png)
+
 *Get Additional Information with the Certbot Certificates Command*
 
 
@@ -447,5 +450,6 @@ If everything ran successfully
 
 
 ![](aditya/https.png)
+
 The Production Website Running in an Nginx Docker Container with a Let's Encrypt SSL/TLS Certificate
 
