@@ -192,7 +192,7 @@ Let's Encrypt is an open, not for profit and free Certificate Authority (CA). Th
 
 ##### The nginx configuration file does the following:
 
-* Listens for requests on port 80 for URLs ohhaithere.com and www.ohhaithere.com
+* Listens for requests on port 80 for URLs ohhaithere.com and www.adityamishra.tech
 
 * Gives the Certbot agent access to ./well-known/acme-challenge
  
@@ -230,6 +230,7 @@ Before running the Certbot command, spin up a Nginx container in Docker to ensur
 Then, open up a browser and visit the domain to ensure that the Docker container is up and running and accessible. As stated earlier, it's not necessary to have a default index.html page for this container, but it makes testing the container a lot easier, so I always create one.
 
 ![](aditya/http.png)
+*The Site Running in the Nginx Docker Container for Generating the First Let's Encrypt Certificate*
 
 
 We're almost ready to execute the Certbot command. But before we do, you need to be aware that Let's Encrypt has rate limits. Most notably, there's a limit of 20 issued certificates per 7 days. So if you exceeded 20 requests and are having a problem with generating your certificate for whatever reason, you could run into trouble. Therefore, it's always wise to run your commands with a --staging parameter which will allow you to test if your commands will execute properly before running the actual commands.
@@ -253,13 +254,8 @@ We're almost ready to execute the Certbot command. But before we do, you need to
 
 After executing the above command, you should get the following output which should indicate everything ran successfully.
 
-
-
-
-
-
-
-
+![](aditya/6.png)
+*Issue a new Let's Encrypt Certificate with Certbot and Docker in Staging Mode*
 
 ##### The command does the following:
 
@@ -296,6 +292,11 @@ After executing the above command, you should get the following output which sho
 	--staging \
 	certificates
 	
+	
+	
+![](aditya/7.png)
+*Get Additional Information with the Certbot Certificates Command*
+
 
 
 
@@ -444,4 +445,7 @@ If everything ran successfully
 
 *If you open up a browser and point to* `http://www.adityamishra.tech`, *you should see that the site loads correctly and will automatically redirect to* `https://www.adityamishra.tech`
 
+
+![](aditya/https.png)
+The Production Website Running in an Nginx Docker Container with a Let's Encrypt SSL/TLS Certificate
 
