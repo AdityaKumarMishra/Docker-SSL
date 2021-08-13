@@ -1,8 +1,8 @@
 # How to Set Up Free SSL Certificates from Let's Encrypt using Docker and Nginx
 
-#### *The Complete Guide to Automating Certbot using Docker, Nginx and Ubuntu on a Virtual Machine in the Cloud* 
+### *The Complete Guide to Automating Certbot using Docker, Nginx and Ubuntu on a Virtual Machine in the Cloud* 
 
-![](file:///home/aditya/Pictures/aditya/1.png)
+![](aditya/1.png)
 
  >Before we continue, let's look at what I'll be covering in this post:
 
@@ -71,9 +71,9 @@ Let's Encrypt is an open, not for profit and free Certificate Authority (CA). Th
 2. Run Certbot with a command to obtain your SSL/TLS certificate and save it on your server. The Certificate is valid for 3 months and thus needs to be renewed every 3 months.
 3. Set up a cron job (scheduler) to run Certbot with a Certbot renew command on a weekly basis. When the cron job runs and there are less than 30 days remaining until your certificate expires, the certificate will renew.
 
-#### A Better Solution: Run Let's Encypt's Certbot in a Docker Container
+### A Better Solution: Run Let's Encypt's Certbot in a Docker Container
 
-![](file:///home/aditya/Pictures/aditya/2.png)
+![](aditya/2.png)
 
 #### By dockerizing Certbot, the process for obtaining Let's Encrypt certificates will now only consist of 2 parts:
 
@@ -84,7 +84,9 @@ Let's Encrypt is an open, not for profit and free Certificate Authority (CA). Th
 
 *By running Certbot in a Docker container, we no longer need to be concerned with maintaining the Certbot agent software. If a new version is released, a new image will download and run the next time the Docker container instance launches. Simple and automated.*
 
-#### How to Dockerize Certbot
+### How to Dockerize Certbot
+
+![](aditya/3.png)
 
 **Before we can execute the Certbot command that installs a new certificate, we need to run a very basic instance of Nginx so that the domain `adityamishra.tech` is accessible over HTTP.**
 
@@ -113,8 +115,9 @@ Let's Encrypt is an open, not for profit and free Certificate Authority (CA). Th
 
 5. Issue a Docker Compose down command which will stop and close down your basic version of Nginx container
 
-### Set up Docker, Nginx and Certbot To Obtain Your First Let's Encrypt SSL/TLS Certificate
+## Set up Docker, Nginx and Certbot To Obtain Your First Let's Encrypt SSL/TLS Certificate
 
+![](aditya/4.png)
 
 ###### On your Host server, create a new Directory:
 	
@@ -128,7 +131,7 @@ Let's Encrypt is an open, not for profit and free Certificate Authority (CA). Th
 
 
 
- ###### docker-compose.yml
+ `docker-compose.yml`
  
  	version: '3.1'
 	
@@ -189,7 +192,7 @@ Let's Encrypt is an open, not for profit and free Certificate Authority (CA). Th
 
 ##### The nginx configuration file does the following:
 
-* Listens for requests on port 80 for URLs ohhaithere.com and www.ohhaithere.com
+* Listens for requests on port 80 for URLs ohhaithere.com and www.adityamishra.tech
 
 * Gives the Certbot agent access to ./well-known/acme-challenge
  
@@ -226,7 +229,8 @@ Before running the Certbot command, spin up a Nginx container in Docker to ensur
 
 Then, open up a browser and visit the domain to ensure that the Docker container is up and running and accessible. As stated earlier, it's not necessary to have a default index.html page for this container, but it makes testing the container a lot easier, so I always create one.
 
-![](file:///home/aditya/Pictures/Screenshot from 2021-08-12 18-43-15.png)
+![](aditya/http.png)
+*The Site Running in the Nginx Docker Container for Generating the First Let's Encrypt Certificate*
 
 
 We're almost ready to execute the Certbot command. But before we do, you need to be aware that Let's Encrypt has rate limits. Most notably, there's a limit of 20 issued certificates per 7 days. So if you exceeded 20 requests and are having a problem with generating your certificate for whatever reason, you could run into trouble. Therefore, it's always wise to run your commands with a --staging parameter which will allow you to test if your commands will execute properly before running the actual commands.
@@ -250,13 +254,8 @@ We're almost ready to execute the Certbot command. But before we do, you need to
 
 After executing the above command, you should get the following output which should indicate everything ran successfully.
 
-
-
-
-
-
-
-
+![](aditya/6.png)
+*Issue a new Let's Encrypt Certificate with Certbot and Docker in Staging Mode*
 
 ##### The command does the following:
 
@@ -293,6 +292,11 @@ After executing the above command, you should get the following output which sho
 	--staging \
 	certificates
 	
+	
+	
+![](aditya/7.png)
+*Get Additional Information with the Certbot Certificates Command*
+
 
 
 
@@ -328,9 +332,9 @@ If everything ran successfully
 	sudo docker-compose down
 
 
-#### Set up Your Production Site to Run in a Nginx Docker Container
+### Set up Your Production Site to Run in a Nginx Docker Container
 
-![](file:///home/aditya/Pictures/aditya/5.png)
+![](aditya/5.png)
 
 
 ###### Create the directories for our production site
@@ -439,6 +443,9 @@ If everything ran successfully
 	cd /docker/letsencrypt-docker-nginx/src/production
 	sudo docker-compose up -d
 
-*If you open up a browser and point to* `http://www.ohhaithere.com`, *you should see that the site loads correctly and will automatically redirect to* `https://www.adityamishra.tech`
+*If you open up a browser and point to* `http://www.adityamishra.tech`, *you should see that the site loads correctly and will automatically redirect to* `https://www.adityamishra.tech`
 
+
+![](aditya/https.png)
+The Production Website Running in an Nginx Docker Container with a Let's Encrypt SSL/TLS Certificate
 
