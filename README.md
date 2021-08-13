@@ -1,6 +1,6 @@
 # How to Set Up Free SSL Certificates from Let's Encrypt using Docker and Nginx
 
-#### *The Complete Guide to Automating Certbot using Docker, Nginx and Ubuntu on a Virtual Machine in the Cloud* 
+### *The Complete Guide to Automating Certbot using Docker, Nginx and Ubuntu on a Virtual Machine in the Cloud* 
 
 ![](aditya/1.png)
 
@@ -71,7 +71,7 @@ Let's Encrypt is an open, not for profit and free Certificate Authority (CA). Th
 2. Run Certbot with a command to obtain your SSL/TLS certificate and save it on your server. The Certificate is valid for 3 months and thus needs to be renewed every 3 months.
 3. Set up a cron job (scheduler) to run Certbot with a Certbot renew command on a weekly basis. When the cron job runs and there are less than 30 days remaining until your certificate expires, the certificate will renew.
 
-#### A Better Solution: Run Let's Encypt's Certbot in a Docker Container
+### A Better Solution: Run Let's Encypt's Certbot in a Docker Container
 
 ![](aditya/2.png)
 
@@ -84,7 +84,7 @@ Let's Encrypt is an open, not for profit and free Certificate Authority (CA). Th
 
 *By running Certbot in a Docker container, we no longer need to be concerned with maintaining the Certbot agent software. If a new version is released, a new image will download and run the next time the Docker container instance launches. Simple and automated.*
 
-#### How to Dockerize Certbot
+### How to Dockerize Certbot
 
 ![](aditya/3.png)
 
@@ -331,7 +331,7 @@ If everything ran successfully
 	sudo docker-compose down
 
 
-#### Set up Your Production Site to Run in a Nginx Docker Container
+### Set up Your Production Site to Run in a Nginx Docker Container
 
 ![](aditya/5.png)
 
@@ -442,6 +442,6 @@ If everything ran successfully
 	cd /docker/letsencrypt-docker-nginx/src/production
 	sudo docker-compose up -d
 
-*If you open up a browser and point to* `http://www.ohhaithere.com`, *you should see that the site loads correctly and will automatically redirect to* `https://www.adityamishra.tech`
+*If you open up a browser and point to* `http://www.adityamishra.tech`, *you should see that the site loads correctly and will automatically redirect to* `https://www.adityamishra.tech`
 
 
