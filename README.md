@@ -2,7 +2,7 @@
 
 #### *The Complete Guide to Automating Certbot using Docker, Nginx and Ubuntu on a Virtual Machine in the Cloud* 
 
-![](file:///home/aditya/Pictures/aditya/1.png)
+![](aditya/1.png)
 
  >Before we continue, let's look at what I'll be covering in this post:
 
