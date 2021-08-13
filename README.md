@@ -86,6 +86,8 @@ Let's Encrypt is an open, not for profit and free Certificate Authority (CA). Th
 
 #### How to Dockerize Certbot
 
+![](aditya/3.png)
+
 **Before we can execute the Certbot command that installs a new certificate, we need to run a very basic instance of Nginx so that the domain `adityamishra.tech` is accessible over HTTP.**
 
 ##### In order for Let's Encrypt to issue you a certificate, an ACME Challenge Request is performed:
