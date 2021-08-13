@@ -115,8 +115,9 @@ Let's Encrypt is an open, not for profit and free Certificate Authority (CA). Th
 
 5. Issue a Docker Compose down command which will stop and close down your basic version of Nginx container
 
-### Set up Docker, Nginx and Certbot To Obtain Your First Let's Encrypt SSL/TLS Certificate
+## Set up Docker, Nginx and Certbot To Obtain Your First Let's Encrypt SSL/TLS Certificate
 
+![](aditya/4.png)
 
 ###### On your Host server, create a new Directory:
 	
